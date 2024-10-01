@@ -62,3 +62,12 @@ id:"matti",
 
 
 för att kunna starta node bara en gång statra jag den med npx nodemon app.js
+
+
+
+///////////////////////////
+
+install cors
+ cors dependency will alow us to api calls to our backend.
+ add the the app.js
+const cors = require("cors")
