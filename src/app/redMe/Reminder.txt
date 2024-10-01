@@ -49,3 +49,16 @@ mongoose.connect(`mongodb+srv://matti:12345@node.9ms98.mongodb.net/?retryWrites=
 
 
 /////////////////////////////
+
+What is (SCHEMA) 
+Schema the the structure in databas
+Schema 
+{
+id:"matti",
+"age":"31"
+}
+
+......
+
+
+för att kunna starta node bara en gång statra jag den med npx nodemon app.js
