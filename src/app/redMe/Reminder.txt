@@ -1,3 +1,51 @@
 1. Router can not be named same the pageName and the every file be named page.jsx
 2. Using the () => (auth) will not change the rout ... http://localhost:3000/register  { http://localhost:3000/Home/register () this will remove the home and will work }
 3. Catch all Segments.. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+to work with MongoDB and connet the frontend to the backEnd Using ths node 
+1.install node
+2. install mongoose, and import the link from mongoDB 
+
+
+
+
+Exampl:
+const express = require('express')
+const app = express()
+const port = 3005
+const mongoose = require('mongoose');
+
+
+app.get('/api', (req, res) => {
+  res.send('Hello Worssssld!')
+})
+
+mongoose.connect(`mongodb+srv://matti:12345@node.9ms98.mongodb.net/?retryWrites=true&w=majority&appName=node`)
+.then(() =>{
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+  })
+})
+.catch((err)=> {console.log(err)})
+
+
+/////////////////////////////
