@@ -17,7 +17,13 @@ const Home= () => {
   })
   return (
     <div>
+      <form action={"/"} method='post'>
       <h1>Hi {message}</h1>
+        <input name='userNamee' type="text" />
+        <br /> <br></br>
+        <button> Send to DB</button>
+      
+      </form>
     </div>
   )
 }
