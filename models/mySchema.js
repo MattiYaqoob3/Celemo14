@@ -1,18 +1,13 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-
-// define the Schema 
+// define the Schema
 const artcleSchema = new Schema({
-    userNamee: String
-})
-
-
+  userNamee: String,
+});
 
 // Create a model based on that Schema
-const Mydata = mongoose.model("Mydataa", artcleSchema)
-
-
+const Mydata = mongoose.model("Mydataa", artcleSchema);
 
 // export the model
-module.exports = Mydata
+module.exports = Mydata;
