@@ -25,15 +25,15 @@ mongoose.connect(`mongodb+srv://matti:12345@node.9ms98.mongodb.net/alldata?retry
 
 
 app.post("/api/user", async(req, res)=>{
-  res.send("adam")
   const mydata = new Mydata()
-  mydata.userNamee = "Lord"
-  mydata.save()
- 
+
+  const name = req.body.username
+  mydata.username = name
+  await mydata.save(name)
+  res.json(mydata)
+  console.log(req.body)
 })
 
 app.get("/api/user", (req, res)=>{
-  res.json({
-    name: req.body.userName
-  })
+ 
 })
