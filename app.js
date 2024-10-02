@@ -2,13 +2,12 @@ const express = require('express')
 const app = express()
 const port = 8080
 const mongoose = require('mongoose');
-const cors = require("cors")
 app.use(express.urlencoded({extended: true}))
 const Mydata = require("./models/mySchema"); // this will call ta Schema 
 const { console } = require('inspector');
 
 
-app.use(cors());
+app.use(express.json());
 
 
 app.get("/api/home", (req, res)=>{
@@ -29,7 +28,7 @@ app.post("/api/user", async(req, res)=>{
 
   const name = req.body.username
   mydata.username = name
-  await mydata.save(name)
+  await mydata.save()
   res.json(mydata)
   console.log(req.body)
 })
