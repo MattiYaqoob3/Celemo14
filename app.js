@@ -33,6 +33,8 @@ app.post("/api/user", async(req, res)=>{
   console.log(req.body)
 })
 
-app.get("/api/user", (req, res)=>{
- 
+app.get("/api/user", async(req, res)=>{
+ const usernames = await Mydata.find()
+ console.log(usernames)
+ res.json(usernames)
 })
