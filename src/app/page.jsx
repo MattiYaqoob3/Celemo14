@@ -7,7 +7,7 @@ export default function Home() {
   const [responseMessage, setResponseMessage] = useState('');
 
   const handleSubmit = async (e) =>{
-    e.preventDefault();
+    e.preventDefault(); // this for showing the err message
     try{
       const response = await fetch('http://localhost:8080/api/user',{
         method:'POST',
@@ -18,13 +18,7 @@ export default function Home() {
           username
         })
       })
-      if (response.ok) {
-        const data = await response.json();
-        setResponseMessage(`User ${data.name} created successfully!`);
-      } else {
-        setResponseMessage('Error creating user');
-      }
-     
+      
     }catch(err){
       console.log(err, "error")
       setResponseMessage('Failed to create user');

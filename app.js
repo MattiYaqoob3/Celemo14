@@ -1,12 +1,15 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const port = 8080;
 const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: true }));
 const Mydata = require("./models/mySchema"); // this will call ta Schema
 const { console } = require("inspector");
 
+app.use(cors());
 app.use(express.json());
+
 
 app.get("/api/home", (req, res) => {
   res.json({ message: "Matti" });
