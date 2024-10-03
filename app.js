@@ -53,5 +53,4 @@ app.get("/api/user/:id", async (req, res) => {
     console.log("error reading userId", id);
     res.status(500).json({ message: "Server error" });
   }
-  
 });

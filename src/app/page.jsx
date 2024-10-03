@@ -1,32 +1,50 @@
-'use client'; 
-import React, { useState, useEffect } from 'react';
+"use client";
+import { useState } from "react";
 
-const Home= () => {
-  const[userNamee, setuserName] = useState(``)
+export default function Home() {
 
-  const[message, setmessage] = useState("loging")
+  const [username, setusername] = useState('');
+  const [responseMessage, setResponseMessage] = useState('');
 
-  useEffect(()=>{
-    fetch("http://localhost:8080/api/home").then(
-      response => response.json()
-    ).then(
-      data => {
-        console.log(data)
-        setmessage(data.message)
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    try{
+      const response = await fetch('http://localhost:8080/api/user',{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username
+        })
+      })
+      if (response.ok) {
+        const data = await response.json();
+        setResponseMessage(`User ${data.name} created successfully!`);
+      } else {
+        setResponseMessage('Error creating user');
       }
-    )
-  })
-  return (
+     
+    }catch(err){
+      console.log(err, "error")
+      setResponseMessage('Failed to create user');
+    }
+     
+  }
+
+
+  return(
+    
     <div>
-      <form action={"/"} method='post'>
-      <h1>Hi {message}</h1>
-        <input name='userNamee' type="text" />
-        <br /> <br></br>
-        <button> Send to DB</button>
-      
+      <h1>Save your name in DB</h1>
+
+      <form action="/" onSubmit={handleSubmit}>
+      <input type="text" onChange={(e)=> setusername(e.target.value)} /><br />
+      <button type="submit">Send</button>
       </form>
+      
+    
+      {responseMessage && <p>{responseMessage}</p>}
     </div>
   )
 }
-
-export default Home
