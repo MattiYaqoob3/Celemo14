@@ -60,3 +60,39 @@ app.get("/api/user/:id", async (req, res) => {
 
 
 //////////////////////////////////////////////////
+//upload a img to aws
+
+const {S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
+const fs = require('fs')
+require('dotenv').config();
+
+const s3 = new S3Client({
+    region: process.env.AWS_REGION,
+    credentials:{
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+})
+
+const uploadFileToS3  = async (filePath, bucketName, s3FileName) =>{
+    try{
+        const fileContent = fs.readFileSync(filePath)
+
+        const uploadParms = {
+            Bucket : bucketName,
+            Key: s3FileName,
+            Body: fileContent,
+            ContentType : 'img'
+        }
+        const result = await s3.send(new PutObjectCommand(uploadParms))
+        console.log("File uploaded successfully!", result)
+    }catch(err){
+        console.error("Error uploading file:", err)
+    }
+}
+
+const filePath = "server/Skärmbild 2024-02-08 175218.png"/// file patch in the app
+const bucketName = 'text-1-mj-v2'
+const s3FileName = 'matti'
+
+uploadFileToS3(filePath,bucketName,s3FileName)
