@@ -71,3 +71,38 @@ install cors
  cors dependency will alow us to api calls to our backend.
  add the the app.js
 const cors = require("cors")
+
+
+
+
+
+
+
+
+
+
+///////////
+
+ try {
+    const params = {
+      SESClient: "matishahad2009@yahoo.com",
+      Destination: {
+        ToAddresses: ["matishahad2009@yahoo.com"],
+      },
+      message: {
+        Subject: {
+          Data: "Test Email from SES",
+        },
+        Body: {
+          Text: {
+            Data: "This is a test email from amazom",
+          },
+        },
+      },
+    };
+    const command = SendEmailCommand(params);
+    const response = await ses.send(command);
+    console.log("Email sends successfully", response);
+  } catch (err) {
+    console.error("Eerror sednig email", err);
+  }
