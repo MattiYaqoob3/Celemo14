@@ -4,7 +4,7 @@ const cors = require('cors');
 const port = 8080;
 const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: true }));
-const Mydata = require("./models/mySchema"); // this will call ta Schema
+const Mydata = require("../models/mySchema"); // this will call ta Schema
 const { console } = require("inspector");
 
 app.use(cors());
@@ -57,3 +57,6 @@ app.get("/api/user/:id", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+
+//////////////////////////////////////////////////
