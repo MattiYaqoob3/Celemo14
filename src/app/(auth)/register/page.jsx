@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from "react"
+import './layout.css'
 const register = () => {
   return (
     <div>
-      <h1>Register</h1>
+      <h1>Bar</h1>
+
+
+      <div className="progress-bar-backround">
+        <div className="progress-bar">
+        </div>
+      </div>
     </div>
   )
 }

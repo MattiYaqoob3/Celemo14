@@ -1,0 +1,14 @@
+.progress-bar{
+    top: 5px;
+    bottom: 5px;
+    background: rgb(103,189, 255);
+    position: absolute;
+}
+
+
+.progress-bar-backround{
+    position: relative;
+    height: 24px;
+    width: 310px;
+    background: gray;
+}
